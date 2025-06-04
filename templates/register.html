@@ -1,12 +1,50 @@
 <!DOCTYPE html>
-<html>
-<head><title>Register</title></head>
-<body>
-<h2>Register</h2>
-<form method="POST">
-  Email: <input type="email" name="email" required><br>
-  Password: <input type="password" name="password" required><br>
-  <button type="submit">Register</button>
-</form>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Medical Records</title>
+    <link href="/static/css/output.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="/static/js/auth.js" defer></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold text-center mb-6">Create Account</h1>
+        
+        <form id="registerForm" class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium mb-1">Email</label>
+                <input type="email" id="regEmail" required 
+                       class="w-full p-3 border rounded-lg">
+            </div>
+            
+            <div>
+                <label class="block text-sm font-medium mb-1">Password</label>
+                <input type="password" id="regPassword" required 
+                       class="w-full p-3 border rounded-lg">
+            </div>
+            
+            <div>
+                <label class="block text-sm font-medium mb-1">Confirm Password</label>
+                <input type="password" id="regPasswordConfirm" required 
+                       class="w-full p-3 border rounded-lg">
+            </div>
+            
+            <button type="submit" 
+                    class="w-full bg-blue-700 text-white py-3 rounded-lg font-medium hover:bg-blue-800 transition">
+                Register
+            </button>
+            
+            <div id="errorMessage" class="text-red-500 text-center hidden mt-4 p-2 bg-red-50 rounded"></div>
+        </form>
+        
+        <div class="mt-6 text-center">
+            <p class="text-gray-600">Already have an account? 
+                <a href="/login" class="text-blue-700 font-medium hover:underline">Login</a>
+            </p>
+        </div>
+    </div>
 </body>
 </html>
