@@ -42,8 +42,11 @@ def enforce_https():
         url = request.url.replace('http://', 'https://', 1)
         return redirect(url, code=301)
 
+from functools import wraps  # make sure this is imported
+
 def auth_required(f):
-    def decorated(*args, **kwargs):
+    @wraps(f)  # THIS LINE is critical
+    def wrapper(*args, **kwargs):
         id_token = request.cookies.get('token')
         if not id_token:
             return redirect('/login')
@@ -54,7 +57,8 @@ def auth_required(f):
             logging.error(f"Token verification failed: {str(e)}")
             return redirect('/login')
         return f(*args, **kwargs)
-    return decorated
+    return wrapper
+
 
 @app.route('/')
 def index():
@@ -203,4 +207,4 @@ def public_profile(token):
     return jsonify(profile), 200
 
 if __name__ == '__main__':
-    app.run(ssl_context='adhoc' if os.getenv('FLASK_ENV') == 'development' else None)
+    app.run(host="0.0.0.0",port=5000)
