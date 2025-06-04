@@ -1,0 +1,8 @@
+Flask==2.3.2
+Flask-Cors==3.0.10
+pyqrcode==1.2.1
+pymongo==4.3.3
+python-dotenv==0.21.0
+firebase-admin==6.2.0
+gunicorn==20.1.0
+flask-limiter==2.6.3
