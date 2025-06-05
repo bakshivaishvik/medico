@@ -16,6 +16,8 @@ from flask_limiter.util import get_remote_address
 load_dotenv()
 
 app = Flask(__name__)
+
+#euibfiyebryerreserigsbre
 CORS(app)
 
 # Initialize Firebase
